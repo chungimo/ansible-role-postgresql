@@ -1,0 +1,12 @@
+---
+# Get facts required
+- include_tasks: facts.yml
+
+# Setup/install tasks.
+- include_tasks: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- include_tasks: install_postgresql.yml
