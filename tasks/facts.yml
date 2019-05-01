@@ -33,6 +33,11 @@
     postgresql_bin_path: "{{ __postgresql_bin_path }}"
   when: postgresql_bin_path is not defined
 
+- name: Define postgresql_bin_path if version 11.
+  set_fact:
+    postgresql_bin_path: "/usr/pgsql-11/bin"
+  when: postgresql_version == "11"
+
 - name: Define postgresql_config_path.
   set_fact:
     postgresql_config_path: "{{ __postgresql_config_path }}"
